@@ -19,7 +19,7 @@ open class WhisperView: UIView {
     let label = UILabel()
     label.textAlignment = .center
     label.font = UIFont(name: "HelveticaNeue", size: 13)
-    label.frame.size.width = UIScreen.main.bounds.width - 60
+    label.frame.size.width = width - 60
 
     return label
     }()
@@ -33,12 +33,15 @@ open class WhisperView: UIView {
 
   open weak var delegate: NotificationControllerDelegate?
   open var height: CGFloat
+  open var width: CGFloat
+    
   var whisperImages: [UIImage]?
 
   // MARK: - Initializers
 
-  init(height: CGFloat, message: Message) {
+  init(height: CGFloat, width: CGFloat, message: Message) {
     self.height = height
+    self.width = width
     self.whisperImages = message.images
     super.init(frame: CGRect.zero)
 
@@ -54,7 +57,7 @@ open class WhisperView: UIView {
       complementImageView.image = whisperImages?.first
     }
 
-    frame = CGRect(x: 0, y: height, width: UIScreen.main.bounds.width, height: Dimensions.height)
+    frame = CGRect(x: 0, y: height, width: width, height: Dimensions.height)
     for subview in transformViews { addSubview(subview) }
 
     titleLabel.sizeToFit()

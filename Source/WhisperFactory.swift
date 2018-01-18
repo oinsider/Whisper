@@ -50,7 +50,9 @@ class WhisperFactory: NSObject {
     }
 
     if !containsWhisper {
-      whisperView = WhisperView(height: navigationController.navigationBar.frame.height, message: message)
+      whisperView = WhisperView(height: navigationController.navigationBar.frame.height,
+                                width: navigationController.navigationBar.frame.width,
+                                message: message)
       whisperView.frame.size.height = 0
       var maximumY = navigationController.navigationBar.frame.height
 
@@ -192,7 +194,9 @@ class WhisperFactory: NSObject {
     let action = WhisperAction(rawValue: actionString)
     let message = Message(title: title, textColor: textColor, backgroundColor: backgroundColor, images: images)
 
-    whisperView = WhisperView(height: navigationController.navigationBar.frame.height, message: message)
+    whisperView = WhisperView(height: navigationController.navigationBar.frame.height,
+                              width: navigationController.navigationBar.frame.width,
+                              message: message)
     navigationController.navigationBar.addSubview(whisperView)
     whisperView.frame.size.height = 0
 
